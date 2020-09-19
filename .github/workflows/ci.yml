@@ -59,3 +59,9 @@ jobs:
 #        name: logs_${{ matrix.boost_version }}
 #        path: ./logs
 #      if: always()
+    - name: Upload Source
+      uses: actions/upload-artifact@v1
+      with:
+        name: source_${{ matrix.boost_version }}
+        path: ./boost_${{ matrix.boost_version }}
+      if: always()
