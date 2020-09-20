@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -69,5 +69,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: source_${{ matrix.boost_version }}
-        path: ./boost_${{ matrix.boost_version }}
+        path: ./boost_${{ matrix.boost_version }}/boost
       if: always()
