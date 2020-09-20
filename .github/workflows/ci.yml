@@ -48,17 +48,23 @@ jobs:
 #        name: binaries_${{ matrix.boost_version }}_${{ matrix.abi }}
 #        path: ./bins
 #      if: always()
-    - name: search h
-      run: |
-        set -x
-        find . -name *.h
-      if: always()
+#    - name: search h
+#      run: |
+#        set -x
+#        find . -name *.h
+#      if: always()
 #    - name: Upload Logs
 #      uses: actions/upload-artifact@v1
 #      with:
 #        name: logs_${{ matrix.boost_version }}
 #        path: ./logs
 #      if: always()
+    - name: rename boost source
+      run: |
+        boostDir=$(echo "${{ matrix.boost_version }}" | tr '.' '_')
+        mv ./boost_${boostDir} ./boost_${{ matrix.boost_version }}
+        find . -name *.h
+      if: always()
     - name: Upload Source
       uses: actions/upload-artifact@v1
       with:
